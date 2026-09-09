@@ -1,180 +1,249 @@
-<title>쇼앤 편집국 현황판</title>
+<title>쇼앤 기사 공장</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
 :root{
-  --paper:#f4f6f8; --card:#ffffff; --ink:#131c24; --dim:#5c6b76; --faint:#8b99a4;
-  --line:#c9d2d9; --hair:#e2e8ec;
-  --navy:#0b3d5c; --red:#b3251e; --amber:#a8730a; --good:#2f7d54;
-  --navy-wash:#e7eef3; --red-wash:#fbeceb;
-  --serif:"Nanum Myeongjo",Batang,"Apple SD Gothic Neo",serif;
-  --sans:"IBM Plex Sans KR","Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
-  --mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  --바닥:#e9edf0; --판:#ffffff; --잉크:#131c24; --흐림:#5c6b76; --옅음:#8d9aa4;
+  --선:#c3ccd3; --실선:#dde3e8;
+  --남:#0b3d5c; --빨:#b3251e; --호박:#a8730a; --초록:#2f7d54;
+  --남물:#e6eef3; --빨물:#fbeceb; --쇠:#9aa7b0;
+  --명조:"Nanum Myeongjo",Batang,"Apple SD Gothic Neo",serif;
+  --고딕:"IBM Plex Sans KR","Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
+  --숫자:"IBM Plex Mono",SFMono-Regular,Consolas,monospace;
 }
-@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
-  --paper:#0d141a; --card:#151f27; --ink:#e6edf2; --dim:#9aabb6; --faint:#6f8290;
-  --line:#2a3844; --hair:#1e2a34;
-  --navy:#6db2dd; --red:#e5726a; --amber:#d9a441; --good:#5fbf8c;
-  --navy-wash:#16303f; --red-wash:#33201f;
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --바닥:#0c1217; --판:#141d24; --잉크:#e6edf2; --흐림:#98a8b3; --옅음:#6d7f8c;
+  --선:#293742; --실선:#1d2831;
+  --남:#6db2dd; --빨:#e5726a; --호박:#d9a441; --초록:#5fbf8c;
+  --남물:#15303f; --빨물:#33201f; --쇠:#4a5a66;
 }}
 :root[data-theme="dark"]{
-  --paper:#0d141a; --card:#151f27; --ink:#e6edf2; --dim:#9aabb6; --faint:#6f8290;
-  --line:#2a3844; --hair:#1e2a34;
-  --navy:#6db2dd; --red:#e5726a; --amber:#d9a441; --good:#5fbf8c;
-  --navy-wash:#16303f; --red-wash:#33201f;
+  --바닥:#0c1217; --판:#141d24; --잉크:#e6edf2; --흐림:#98a8b3; --옅음:#6d7f8c;
+  --선:#293742; --실선:#1d2831;
+  --남:#6db2dd; --빨:#e5726a; --호박:#d9a441; --초록:#5fbf8c;
+  --남물:#15303f; --빨물:#33201f; --쇠:#4a5a66;
 }
 *{box-sizing:border-box}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);
-     -webkit-text-size-adjust:100%;line-height:1.55}
-.wrap{max-width:540px;margin:0 auto;padding:0 14px 56px}
+body{background:var(--바닥);color:var(--잉크);font-family:var(--고딕);line-height:1.55;
+     -webkit-text-size-adjust:100%}
+.판{max-width:560px;margin:0 auto;padding:0 14px 60px}
 
-/* ── 머리 ── */
-header{position:sticky;top:0;z-index:5;background:var(--paper);
-       padding:16px 0 10px;border-bottom:1px solid var(--line)}
-.mast{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-.mast h1{margin:0;font-family:var(--serif);font-weight:800;font-size:23px;letter-spacing:-.01em}
-.mast time{font-family:var(--mono);font-size:12px;color:var(--dim);white-space:nowrap}
-.tally{display:flex;gap:0;margin-top:12px;border:1px solid var(--line);border-radius:3px;
-       overflow:hidden;background:var(--card)}
-.tally div{flex:1;padding:9px 6px;text-align:center;border-right:1px solid var(--hair)}
-.tally div:last-child{border-right:0}
-.tally b{display:block;font-family:var(--mono);font-size:20px;font-weight:600;
-         font-variant-numeric:tabular-nums;line-height:1.2}
-.tally span{display:block;font-size:10.5px;color:var(--dim);letter-spacing:.06em;margin-top:2px}
-.t-sok b{color:var(--red)} .t-bri b{color:var(--navy)} .t-out b{color:var(--faint)}
+/* ── 간판 ── */
+header{position:sticky;top:0;z-index:9;background:var(--바닥);padding:15px 0 10px;
+       border-bottom:1px solid var(--선)}
+.간판{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.간판 h1{margin:0;font-family:var(--명조);font-weight:800;font-size:22px;letter-spacing:-.02em}
+.간판 time{font-family:var(--숫자);font-size:11.5px;color:var(--흐림);white-space:nowrap}
+.계기{display:flex;margin-top:11px;border:1px solid var(--선);border-radius:4px;
+      overflow:hidden;background:var(--판)}
+.계기 div{flex:1;padding:8px 4px;text-align:center;border-right:1px solid var(--실선)}
+.계기 div:last-child{border-right:0}
+.계기 b{display:block;font-family:var(--숫자);font-size:19px;font-weight:600;
+        font-variant-numeric:tabular-nums;line-height:1.15}
+.계기 span{display:block;font-size:10px;color:var(--흐림);letter-spacing:.05em;margin-top:2px}
+.계-속 b{color:var(--빨)} .계-브 b{color:var(--남)} .계-내 b{color:var(--옅음)}
 
-/* ── 거르개 ── */
-.filters{display:flex;gap:6px;margin:12px 0 4px}
-.filters button{flex:1;min-height:44px;font-family:var(--sans);font-size:13px;font-weight:600;
-  color:var(--dim);background:var(--card);border:1px solid var(--line);border-radius:3px;
-  cursor:pointer;padding:0 4px}
-.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.filters button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+/* ── 공장 라인 ── */
+.공장{position:relative;margin:18px 0 6px;padding:16px 0 10px}
+.공장::before{content:"";position:absolute;left:31px;top:26px;bottom:26px;width:6px;
+  background:repeating-linear-gradient(180deg,var(--쇠),var(--쇠) 9px,transparent 9px,transparent 16px);
+  border-radius:3px;opacity:.55}
+.칸{position:relative;display:grid;grid-template-columns:66px 1fr;gap:12px;
+    align-items:center;padding:9px 0}
+.자리{position:relative;width:66px;height:64px}
 
-/* ── 기사 ── */
-.list{margin-top:14px;display:flex;flex-direction:column;gap:10px}
-article{background:var(--card);border:1px solid var(--hair);border-left:4px solid var(--navy);
-        border-radius:3px;padding:13px 13px 11px}
-article.sok{border-left-color:var(--red)}
-.top{display:flex;align-items:center;gap:7px;margin-bottom:7px;flex-wrap:wrap}
-.chip{font-size:10.5px;font-weight:700;letter-spacing:.08em;padding:2.5px 7px;border-radius:2px;
-      background:var(--navy-wash);color:var(--navy)}
-.sok .chip{background:var(--red-wash);color:var(--red)}
-.no{font-family:var(--mono);font-size:11.5px;color:var(--faint);font-variant-numeric:tabular-nums}
-.track{font-size:11px;color:var(--faint);margin-left:auto}
-h2{margin:0 0 6px;font-family:var(--serif);font-weight:700;font-size:17.5px;line-height:1.4;
-   letter-spacing:-.01em;text-wrap:balance}
-h2 a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
-h2 a:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-.lead{margin:0;font-size:13px;color:var(--dim);line-height:1.6}
-.origin{margin:9px 0 0;font-size:11.5px;color:var(--faint)}
-.origin b{color:var(--dim);font-weight:600}
+/* 미니어처 사람 — 순수 CSS */
+.사람{position:absolute;left:14px;bottom:4px;width:38px;height:52px}
+.머리{position:absolute;left:11px;top:0;width:16px;height:16px;border-radius:50%;
+      background:#e7c39d;border:2px solid var(--잉크)}
+.머리::after{content:"";position:absolute;left:-2px;top:-3px;width:20px;height:9px;
+      border-radius:9px 9px 0 0;background:var(--잉크)}
+.몸{position:absolute;left:7px;top:17px;width:24px;height:24px;border-radius:7px 7px 4px 4px;
+    border:2px solid var(--잉크);background:var(--역할,#8fb3c9)}
+.팔{position:absolute;top:20px;width:7px;height:15px;border-radius:4px;
+    border:2px solid var(--잉크);background:var(--역할,#8fb3c9);transform-origin:top center}
+.팔.좌{left:1px} .팔.우{right:1px}
+.다리{position:absolute;top:40px;width:9px;height:12px;border-radius:0 0 4px 4px;
+      border:2px solid var(--잉크);background:#37485a}
+.다리.좌{left:8px} .다리.우{right:8px}
+.연장{position:absolute;right:-6px;top:16px;width:14px;height:14px;border-radius:3px;
+      border:2px solid var(--잉크);background:var(--연장색,#f0c04a);transform:rotate(-14deg)}
+.대기 .사람{opacity:.45;filter:grayscale(.7)}
+@keyframes 들썩{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes 팔짓{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-26deg)}}
+.일하는 .사람{animation:들썩 1.6s ease-in-out infinite}
+.일하는 .팔.우{animation:팔짓 1.1s ease-in-out infinite}
 
-/* ── 8단계 레일 ── */
-.rail{display:flex;gap:2px;margin:11px 0 8px}
-.rail i{flex:1;height:5px;background:var(--hair);border-radius:1px}
-.rail i.on{background:var(--navy)}
-.sok .rail i.on{background:var(--red)}
-.rail i.skip{background:repeating-linear-gradient(45deg,var(--hair),var(--hair)2px,transparent 2px,transparent 4px)}
-.roles{display:flex;justify-content:space-between;font-size:9px;color:var(--faint);letter-spacing:-.02em}
+/* 작업대 */
+.대{background:var(--판);border:1px solid var(--실선);border-left:4px solid var(--쇠);
+    border-radius:4px;padding:9px 11px}
+.대.속{border-left-color:var(--빨)} .대.브{border-left-color:var(--남)}
+.대 .머리줄{display:flex;align-items:baseline;gap:7px}
+.대 h2{margin:0;font-family:var(--명조);font-size:15.5px;font-weight:700}
+.대 .번{font-family:var(--숫자);font-size:11px;color:var(--옅음)}
+.대 .통과{margin-left:auto;font-family:var(--숫자);font-size:11.5px;color:var(--초록);
+          font-variant-numeric:tabular-nums}
+.대 p{margin:3px 0 0;font-size:11.5px;color:var(--흐림)}
+.막대{margin-top:7px;height:5px;border-radius:3px;background:var(--실선);overflow:hidden}
+.막대 i{display:block;height:100%;background:var(--초록);border-radius:3px}
 
-/* ── 수치 ── */
-.nums{display:flex;gap:14px;margin-top:10px;padding-top:9px;border-top:1px solid var(--hair);
-      font-family:var(--mono);font-size:11.5px;font-variant-numeric:tabular-nums}
-.nums span{color:var(--faint)}
-.nums b{font-weight:600;color:var(--ink)}
-.nums .hot b{color:var(--amber)}
-.nums .pass b{color:var(--good)}
+/* 벨트 위의 기사 토큰 */
+.토큰{position:absolute;left:24px;width:16px;height:20px;border-radius:2px;
+      border:1.5px solid var(--잉크);background:#fff;z-index:3}
+.토큰.속{background:var(--빨물);border-color:var(--빨)}
+.토큰.브{background:var(--남물);border-color:var(--남)}
+@keyframes 흐름{
+  0%{top:-14px;opacity:0} 6%{opacity:1}
+  94%{opacity:1} 100%{top:calc(100% + 6px);opacity:0}}
+.흐르는{animation:흐름 var(--시간,14s) linear infinite}
 
-/* ── 내린 기사 ── */
-.out{margin-top:26px;border-top:1px solid var(--line);padding-top:16px}
-.out h3{margin:0 0 3px;font-family:var(--serif);font-size:15px;font-weight:700}
-.out p{margin:0 0 11px;font-size:12px;color:var(--dim);line-height:1.6}
-.out ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
-.out li{display:flex;gap:9px;align-items:baseline;font-size:13px;color:var(--dim);
-        background:var(--card);border:1px solid var(--hair);border-radius:3px;padding:9px 11px}
-.out li em{font-family:var(--mono);font-size:11px;color:var(--faint);font-style:normal;
-           text-decoration:line-through}
-footer{margin-top:24px;font-size:11px;color:var(--faint);line-height:1.7;text-align:center}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ── 기사 목록 ── */
+.목록{margin-top:22px;border-top:1px solid var(--선);padding-top:15px}
+.목록 h3{margin:0 0 9px;font-family:var(--명조);font-size:15px}
+.줄{display:flex;flex-direction:column;gap:8px}
+article{background:var(--판);border:1px solid var(--실선);border-left:4px solid var(--남);
+        border-radius:4px;padding:10px 11px}
+article.속{border-left-color:var(--빨)}
+.위{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.칩{font-size:10px;font-weight:700;letter-spacing:.07em;padding:2px 6px;border-radius:2px;
+    background:var(--남물);color:var(--남)}
+.속 .칩{background:var(--빨물);color:var(--빨)}
+.no{font-family:var(--숫자);font-size:11px;color:var(--옅음)}
+.트랙{margin-left:auto;font-size:10.5px;color:var(--옅음)}
+article h4{margin:0 0 4px;font-family:var(--명조);font-size:15px;font-weight:700;line-height:1.4;
+           text-wrap:balance}
+article h4 a{color:inherit;text-decoration:none;border-bottom:1px solid var(--선)}
+article h4 a:focus-visible{outline:2px solid var(--호박);outline-offset:2px}
+.발단{margin:0;font-size:11px;color:var(--옅음)}
+.수치{display:flex;gap:12px;margin-top:7px;padding-top:6px;border-top:1px solid var(--실선);
+      font-family:var(--숫자);font-size:11px;font-variant-numeric:tabular-nums;color:var(--옅음)}
+.수치 b{color:var(--잉크);font-weight:600}
+.수치 .온 b{color:var(--호박)} .수치 .점 b{color:var(--초록)}
+
+/* ── 내린 것 ── */
+.폐기{margin-top:20px;border-top:1px solid var(--선);padding-top:14px}
+.폐기 h3{margin:0 0 3px;font-family:var(--명조);font-size:14.5px}
+.폐기 p{margin:0 0 9px;font-size:11.5px;color:var(--흐림);line-height:1.6}
+.폐기 ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.폐기 li{display:flex;gap:8px;align-items:baseline;font-size:12.5px;color:var(--흐림);
+         background:var(--판);border:1px dashed var(--선);border-radius:4px;padding:8px 10px}
+.폐기 li em{font-family:var(--숫자);font-size:10.5px;color:var(--옅음);font-style:normal;
+            text-decoration:line-through}
+footer{margin-top:22px;font-size:10.5px;color:var(--옅음);line-height:1.7;text-align:center}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
-<div class="wrap">
+
+<div class="판">
 <header>
-  <div class="mast"><h1>쇼앤 편집국</h1><time datetime="2026-09-09">2026년 9월 9일</time></div>
-  <div class="tally">
-    <div class="t-sok"><b id="n-sok">0</b><span>속보</span></div>
-    <div class="t-bri"><b id="n-bri">0</b><span>브리핑</span></div>
-    <div><b id="n-avg">0</b><span>평균 데스크</span></div>
-    <div class="t-out"><b id="n-out">0</b><span>내림</span></div>
-  </div>
-  <div class="filters" role="group" aria-label="지면 고르기">
-    <button data-f="all" aria-pressed="true">전체</button>
-    <button data-f="속보" aria-pressed="false">속보</button>
-    <button data-f="브리핑" aria-pressed="false">브리핑</button>
+  <div class="간판"><h1>쇼앤 기사 공장</h1><time id="때">—</time></div>
+  <div class="계기">
+    <div class="계-속"><b id="ㄱ속">0</b><span>속보</span></div>
+    <div class="계-브"><b id="ㄱ브">0</b><span>브리핑</span></div>
+    <div><b id="ㄱ점">0</b><span>평균 데스크</span></div>
+    <div class="계-내"><b id="ㄱ내">0</b><span>폐기</span></div>
   </div>
 </header>
 
-<div class="list" id="list"></div>
+<section class="공장" id="공장" aria-label="여덟 공정"></section>
 
-<section class="out">
-  <h3>같은 날 내린 기사</h3>
-  <p>쇼앤은 새벽에 국내에서 보기 힘든 해외 소식을 먼저 전하는 지면입니다.
-     아래 넷은 발단이 국내였습니다. 원고는 검수를 통과했지만 지면이 어긋나 내렸습니다.</p>
-  <ul id="out"></ul>
+<section class="목록">
+  <h3>오늘 나간 기사</h3>
+  <div class="줄" id="줄"></div>
 </section>
 
-<footer>단계 레일은 수집가부터 발행까지 여덟 자리입니다.<br>
-빗금은 속보가 건너뛰는 검수왕 자리입니다.</footer>
+<section class="폐기">
+  <h3>라인에서 내린 것</h3>
+  <p>쇼앤은 새벽에 국내에서 보기 힘든 해외 소식을 먼저 전하는 지면입니다.
+     아래는 발단이 국내여서 내렸습니다. 원고는 검수를 통과했지만 지면이 어긋났습니다.</p>
+  <ul id="폐기"></ul>
+</section>
+
+<footer>공정은 수집가부터 발행까지 여덟 자리입니다.<br>
+속보는 검수왕 자리를 건너뜁니다 — 미완이 아니라 규격입니다.</footer>
 </div>
 
 <script>
 const 자료 = {"낸것":[{"no":"12434","sec":"브리핑","title":"비트코인 점유율 58.79%…알트시즌 지수는 32","lead":"2026년 9월 9일 오전 XRP가 2.13%, BNB가 1.99% 올랐습니다. 그래도 알트시즌 지수는 32에 머물러 있습니다. 돈은 아직 비트코인에 남았습니다.","track":"코인","score":97,"temp":86,"kw":["알트시즌 지수","비트코인 점유율","현물 ETF","미결제약정","가상자산 파생상품"],"urls":7,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":true},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"해외 — 전 세계 가상자산 시장 집계"},{"no":"12442","sec":"속보","title":"[속보] 뉴욕 금값 1% 내려 4,430달러","lead":"금 12월물이 2026년 9월 8일 1.0% 내린 온스당 4,430.10달러입니다. 국내 순금 한 돈은 살 때 83만9,000원, 팔 때 71만4,000원입니다.","track":"증시","score":98,"temp":76,"kw":["국제 금값","금 선물","순금 한 돈","금거래소 시세","원달러 환율"],"urls":7,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":false},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"미국 — 뉴욕상품거래소 금 선물"},{"no":"12444","sec":"브리핑","title":"캐나다 보복관세 발효…한국 반도체엔 동등 조항","lead":"캐나다가 9월 8일 미국산 700여 품목에 15~50% 보복관세를 발효했습니다. 연간 수입액으로 약 200억 달러입니다. 대상은 미국산이라 한국 제품은 아닙니다.","track":"증시","score":96,"temp":74,"kw":["캐나다 보복관세","미국 관세전쟁","한국 반도체 관세","불리하지 않은 대우","한국 반도체 수출"],"urls":5,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":true},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"캐나다·미국 — 보복관세와 반도체 조항"},{"no":"12445","sec":"브리핑","title":"비트코인 7만9,000달러 붕괴…ETF 3주 순유입","lead":"미 현물 비트코인 ETF에 3주 연속 돈이 들어왔습니다. 비트코인은 7만9,000달러(약 1억668만 원) 아래로 내려갔습니다. 9월 8일 코인데스크 보도입니다.","track":"코인","score":96,"temp":79,"kw":["비트코인","CME 페드워치","현물 비트코인 ETF","연초 대비 순유출입","한국은행 기준금리"],"urls":3,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":true},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"미국 — 연준 금리 경로와 비트코인"},{"no":"12446","sec":"속보","title":"[속보] 브렌트 99달러, 사우디 시설 피격에 상승","lead":"브렌트 11월물이 배럴당 99.16달러로 2.23% 올랐습니다. 2026년 9월 8일 미 동부 오전 4시 20분 기준값입니다. 후티의 사우디 시설 피격 뒤입니다.","track":"증시","score":98,"temp":82,"kw":["국제유가","브렌트유","한국은행 기준금리","중동 리스크","골드만삭스"],"urls":6,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":false},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"중동 — 사우디 에너지 시설 피격"},{"no":"12448","sec":"브리핑","title":"ETF 자금 72%가 블랙록 한 곳으로","lead":"2026년 8월 17~28일 미 현물 이더리움 ETF에 9거래일 연속 돈이 들어왔습니다. 그 순유입의 72%를 블랙록 ETHA 한 곳이 가져갔습니다. 쏠림입니다.","track":"코인","score":97,"temp":85,"kw":["이더리움 ETF","블랙록 ETHA","현물 ETF","기관 자금","그레이스케일 ETHE"],"urls":9,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":true},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"미국 — 미 현물 이더리움 ETF 자금"},{"no":"12449","sec":"속보","title":"[속보] 다우 628포인트 내려…10년물 4.80%","lead":"2026년 9월 8일 다우지수가 628.18포인트 내린 52,786.07로 마감했습니다. 1.18% 하락입니다. 미 10년물 국채금리는 4.80%까지 올랐습니다.","track":"증시","score":99,"temp":82,"kw":["뉴욕증시","다우지수","미국 국채금리","국제유가","코스피"],"urls":7,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":false},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"미국 — 뉴욕 증시 마감과 미 재무부 고시"},{"no":"12450","sec":"속보","title":"[속보] 호르무즈 긴장 최고조…원유 69%가 중동산","lead":"2026년 9월 9일 호르무즈와 바브엘만데브 긴장이 높아졌습니다. 한국이 2025년 들여온 원유의 69.1%가 중동산입니다. 브렌트는 배럴당 97.92달러입니다.","track":"증시","score":99,"temp":82,"kw":["호르무즈 해협","중동산 원유","국제유가","원유 수입 의존도","한국은행 물가 전망"],"urls":6,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":false},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"중동 — 호르무즈·바브엘만데브 해협 긴장"},{"no":"12452","sec":"속보","title":"[속보] 클래리티법 15일 표결…60표가 관문","lead":"미 상원이 2026년 9월 15일 클래리티 법안을 표결합니다. 토론을 이어가려면 100명 중 60명의 찬성이 필요합니다. 하원은 294대 134로 통과시켰습니다.","track":"코인","score":97,"temp":82,"kw":["클래리티 법안","미 상원 표결","SEC CFTC 감독","가상자산 규제","FOMC"],"urls":7,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":false},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"미국 — 상원 클래리티 법안 표결 일정"},{"no":"12453","sec":"속보","title":"[속보] 미 30년물 5.25%…2년물은 4.15%","lead":"미 국채 30년물 수익률이 2026년 9월 8일 5.25%였습니다. 2년물 4.15%와는 1.10%포인트 차이입니다. 10년물은 4.80%로 그 사이에 있습니다.","track":"증시","score":99,"temp":82,"kw":["미 국채 금리","수익률곡선","한미 금리차","한국은행 기준금리","FOMC"],"urls":7,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":false},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"미국 — 미 재무부 국채수익률곡선"},{"no":"12455","sec":"브리핑","title":"리퀴드 4000BTC 유출…3400BTC만 돌아왔다","lead":"비트코인 사이드체인 리퀴드에서 2026년 9월 6일 3,998.5BTC가 빠져나갔습니다. 하루 뒤 3,400BTC가 돌아왔고 598.5BTC는 아직도 남았습니다.","track":"코인","score":95,"temp":83,"kw":["리퀴드 네트워크","비트코인 사이드체인","블록스트림","L-BTC","화이트햇 해킹"],"urls":13,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":true},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"해외 — 가상자산 거래소 유출 사건"},{"no":"12456","sec":"브리핑","title":"비트코인 고래 순분배 전환…현물 ETF는 순유입","lead":"비트코인 지갑이 2026년 6월 초 이후 처음으로 순분배로 돌아섰습니다. 1,000BTC 이상 고래가 앞장섰습니다. 2026년 9월 7일자 코인데스크 보도입니다.","track":"코인","score":98,"temp":100,"kw":["비트코인 고래","축적 추세 점수","현물 비트코인 ETF","ETF 쏠림 지수","금리 인하 기대"],"urls":15,"stages":[{"n":1,"role":"수집가","done":true},{"n":2,"role":"초고작성","done":true},{"n":3,"role":"검수왕","done":true},{"n":4,"role":"번역기자","done":true},{"n":5,"role":"기자","done":true},{"n":6,"role":"이미지작가","done":true},{"n":7,"role":"데스크","done":true},{"n":8,"role":"발행","done":true}],"origin":"미국 — 온체인 고래 지갑과 미 현물 ETF 자금 흐름"}],"뺀것":[{"no":"12398","title":"코스피 4.61% 급등…7,000선 눈앞에서 멈췄다"},{"no":"12399","title":"집단대출 23개월 만에 최대…주담대 1년 만에 최대"},{"no":"12406","title":"[속보] 반도체 수출 466억 달러…역대 최대 경신"},{"no":"12412","title":"[속보] 8월 가계대출 2조6,000억…증가폭 축소"}]}
 ;
-const 역할 = ["수집","초고","검수","번역","기사","이미지","데스크","발행"];
+const 공정 = [
+  {n:1, 역:"수집가",    색:"#7fa8c4", 연장:"#f0c04a", 일:"원문을 열고 수치를 옮긴다"},
+  {n:2, 역:"초고작성",  색:"#8fbf9f", 연장:"#e08a5a", 일:"영문 초고를 세운다"},
+  {n:3, 역:"검수왕",    색:"#c9a06a", 연장:"#b3251e", 일:"원장과 대조해 세 번 본다"},
+  {n:4, 역:"번역기자",  색:"#9aa9d6", 연장:"#5fbf8c", 일:"국문으로 옮긴다"},
+  {n:5, 역:"기자",      색:"#d69a9a", 연장:"#0b3d5c", 일:"지면 규격으로 쓴다"},
+  {n:6, 역:"이미지작가", 색:"#b79ad6", 연장:"#f0c04a", 일:"표지를 그리고 얹는다"},
+  {n:7, 역:"데스크",    색:"#6f8a9c", 연장:"#b3251e", 일:"채점하고 판정한다"},
+  {n:8, 역:"발행",      색:"#8fb37f", 연장:"#2f7d54", 일:"지면에 낸다"}
+];
 
-function 기사판(a){
-  const 속보 = a.sec === "속보";
-  const rail = a.stages.map(s => {
-    const 건너뜀 = 속보 && s.n === 3 && !s.done;
-    return `<i class="${건너뜀 ? "skip" : (s.done ? "on" : "")}"></i>`;
+function 사람(공, 상태){
+  return `<div class="자리 ${상태}">
+    <div class="사람" style="--역할:${공.색};--연장색:${공.연장}">
+      <div class="팔 좌"></div><div class="팔 우"></div>
+      <div class="다리 좌"></div><div class="다리 우"></div>
+      <div class="몸"></div><div class="머리"></div><div class="연장"></div>
+    </div></div>`;
+}
+
+function 공장그리기(기사들){
+  const 총 = 기사들.length;
+  const 판 = 공정.map(공 => {
+    const 지남 = 기사들.filter(a => {
+      const s = (a.stages || []).find(x => x.n === 공.n);
+      return s ? s.done : false;
+    }).length;
+    // 속보는 3번(검수왕)을 규격대로 건너뛴다 — 분모에서 뺀다
+    const 해당 = 공.n === 3 ? 기사들.filter(a => a.sec !== "속보").length : 총;
+    const 상태 = 해당 === 0 ? "대기" : (지남 >= 해당 ? "끝난" : "일하는");
+    const 몫 = 해당 ? Math.round(지남 / 해당 * 100) : 0;
+    return `<div class="칸">
+      ${사람(공, 상태)}
+      <div class="대 ${공.n === 8 ? "속" : "브"}">
+        <div class="머리줄"><span class="번">${String(공.n).padStart(2,"0")}</span>
+          <h2>${공.역}</h2><span class="통과">${지남}/${해당}</span></div>
+        <p>${공.일}</p>
+        <div class="막대"><i style="width:${몫}%"></i></div>
+      </div></div>`;
   }).join("");
-  const url = `https://www.shown.co.kr/news/articleView.html?idxno=${a.no}`;
-  return `<article class="${속보 ? "sok" : ""}">
-    <div class="top"><span class="chip">${a.sec}</span>
-      <span class="no">${a.no}</span><span class="track">${a.track}</span></div>
-    <h2><a href="${url}" target="_blank" rel="noopener">${a.title}</a></h2>
-    <p class="lead">${a.lead}</p>
-    <div class="rail">${rail}</div>
-    <div class="roles">${역할.map(r => `<span>${r}</span>`).join("")}</div>
-    <p class="origin"><b>발단</b> ${a.origin || "—"}</p>
-    <div class="nums">
-      <span class="pass">데스크 <b>${a.score ?? "—"}</b>/100</span>
-      <span class="hot">검색 <b>${a.temp ?? "—"}</b>도</span>
-      <span>출처 <b>${a.urls}</b>건</span>
-    </div>
-  </article>`;
+
+  const 토큰 = 기사들.slice(0, 8).map((a, i) =>
+    `<span class="토큰 ${a.sec === "속보" ? "속" : "브"} 흐르는"
+       style="--시간:${13 + (i % 4) * 2.5}s;animation-delay:${(i * 1.7).toFixed(1)}s"
+       title="${a.no}"></span>`).join("");
+  document.getElementById("공장").innerHTML = 판 + 토큰;
 }
 
-function 그린다(거르개){
-  const 것들 = 거르개 === "all" ? 자료.낸것 : 자료.낸것.filter(a => a.sec === 거르개);
-  document.getElementById("list").innerHTML = 것들.map(기사판).join("");
+function 기사그리기(기사들){
+  document.getElementById("줄").innerHTML = 기사들.map(a => {
+    const 속 = a.sec === "속보";
+    const url = `https://www.shown.co.kr/news/articleView.html?idxno=${a.no}`;
+    return `<article class="${속 ? "속" : ""}">
+      <div class="위"><span class="칩">${a.sec}</span><span class="no">${a.no}</span>
+        <span class="트랙">${a.track || ""}</span></div>
+      <h4><a href="${url}" target="_blank" rel="noopener">${a.title}</a></h4>
+      <p class="발단">발단 · ${a.origin || "—"}</p>
+      <div class="수치"><span class="점">데스크 <b>${a.score ?? "—"}</b></span>
+        <span class="온">검색 <b>${a.temp ?? "—"}</b>도</span>
+        <span>출처 <b>${a.urls ?? 0}</b>건</span></div>
+    </article>`;
+  }).join("");
 }
 
-const 속보수 = 자료.낸것.filter(a => a.sec === "속보").length;
-const 점수들 = 자료.낸것.map(a => a.score).filter(n => typeof n === "number");
-document.getElementById("n-sok").textContent = 속보수;
-document.getElementById("n-bri").textContent = 자료.낸것.length - 속보수;
-document.getElementById("n-avg").textContent = 점수들.length
-  ? (점수들.reduce((x, y) => x + y, 0) / 점수들.length).toFixed(1) : "—";
-document.getElementById("n-out").textContent = 자료.뺀것.length;
-document.getElementById("out").innerHTML = 자료.뺀것
-  .map(a => `<li><em>${a.no}</em><span>${a.title}</span></li>`).join("");
-
-document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => {
-  document.querySelectorAll(".filters button")
-    .forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-  그린다(b.dataset.f);
-}));
-그린다("all");
+(function(){
+  const 낸 = 자료.낸것 || [], 뺀 = 자료.뺀것 || [];
+  const 속 = 낸.filter(a => a.sec === "속보").length;
+  const 점 = 낸.map(a => a.score).filter(n => typeof n === "number");
+  document.getElementById("ㄱ속").textContent = 속;
+  document.getElementById("ㄱ브").textContent = 낸.length - 속;
+  document.getElementById("ㄱ점").textContent =
+    점.length ? (점.reduce((x, y) => x + y, 0) / 점.length).toFixed(1) : "—";
+  document.getElementById("ㄱ내").textContent = 뺀.length;
+  document.getElementById("때").textContent =
+    new Date().toLocaleString("ko-KR", {month:"long", day:"numeric", hour:"2-digit", minute:"2-digit"});
+  공장그리기(낸);
+  기사그리기(낸);
+  document.getElementById("폐기").innerHTML =
+    뺀.map(a => `<li><em>${a.no || "—"}</em><span>${a.title}</span></li>`).join("");
+})();
 </script>
